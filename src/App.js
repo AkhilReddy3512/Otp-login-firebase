@@ -24,7 +24,7 @@ const App = () => {
           callback: (response) => {
             onSignup();
           },
-          "expired-callback": () => {},
+          "expired-callback": () => { },
         },
         auth
       );
@@ -69,89 +69,89 @@ const App = () => {
 
   return (
     <>
-     <nav class="navbar navbar-light bg-light justify-content-between">
-    <href class="text1 text3"><b>RealtyAi</b></href>
-  </nav>
-  <div>
-  <div class="row">
-    <div class="col">
-    <img style={{height:"500px"}} src="https://about.fb.com/wp-content/uploads/2018/03/screen-2x1.png?fit=1376%2C928" alt="signup"></img>
-    </div>
-    <div class="app1 col flex h-screen">
-    <div style={{marginLeft:"4rem", marginTop:"5rem", marginRight:"4rem"}}class="card">
-        <Toaster toastOptions={{ duration: 4000 }} />
-        <div id="recaptcha-container"></div>
-        {user ? (
-          <h2 style={{marginLeft:"2rem",marginTop:"4rem"}}className="font-medium text-2xl">
-            Login Successful
-            <br/><br/><br/><br/>
-          </h2>
-        ) : (
-          <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
-            <h2>
-             SignUp-Login
-            </h2>
-            {showOTP ? (
-              <>
-                <label
-                  htmlFor="otp"
-                  className="font-bold text-xl"
-                >
-                  <br/><br/>
-                  <br/><br/>
-                  Enter your OTP
-                  <br/>
-                </label>
-                <OtpInput
-                  value={otp}
-                  onChange={setOtp}
-                  OTPLength={6}
-                  otpType="number"
-                  disabled={false}
-                  autoFocus
-                  className="opt-container "
-                ></OtpInput>
-                <br/>
-                <button
-                  onClick={onOTPVerify}
-                  className="btn btn1 btn-outline-info center"
-                >
-                  {loading && (
-                    <CgSpinner size={20} className="mt-1 animate-spin" />
-                  )}
-                  <span>Verify OTP</span>
-                </button>
-              </>
-            ) : (
-              <>
-                <label
-                  htmlFor=""
-                  className="font-bold text-xl"
-                  style={{paddingBottom:"5rem;"}}
-                >
-                  Please enter your mobile number to <br/>recieve a One Time Password
-                </label>
-                <div>
-                <PhoneInput style={{marginTop:"3rem"}} country={"in"} value={ph} onChange={setPh} />
-                <br/>
-                <button
-                  onClick={onSignup}
-                  className="btn btn1 btn-outline-info center"
-                >
-                  {loading && (
-                    <CgSpinner size={20} className="mt-1 animate-spin" />
-                  )}
-                  <span>Send OTP</span>
-                </button>
-                </div>
-              </>
-            )}
+      <nav class="navbar navbar-light bg-light justify-content-between">
+        <href class="text1 text3"><b>RealtyAi</b></href>
+      </nav>
+      <div>
+        <div class="row">
+          <div class="col">
+            <img style={{ height: "500px" }} src="https://about.fb.com/wp-content/uploads/2018/03/screen-2x1.png?fit=1376%2C928" alt="signup"></img>
           </div>
-        )}
+          <div class="app1 col flex h-screen">
+            <div style={{ marginLeft: "4rem", marginTop: "5rem", marginRight: "4rem" }} class="card">
+              <Toaster toastOptions={{ duration: 4000 }} />
+              <div id="recaptcha-container"></div>
+              {user ? (
+                <h2 style={{ marginLeft: "2rem", marginTop: "4rem" }} className="font-medium text-2xl">
+                  Login Successful
+                  <br /><br /><br /><br />
+                </h2>
+              ) : (
+                <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
+                  <h2>
+                    SignUp-Login
+                  </h2>
+                  {showOTP ? (
+                    <>
+                      <label
+                        htmlFor="otp"
+                        className="font-bold text-xl"
+                      >
+                        <br /><br />
+                        <br /><br />
+                        Enter your OTP
+                        <br />
+                      </label>
+                      <OtpInput
+                        value={otp}
+                        onChange={setOtp}
+                        OTPLength={6}
+                        otpType="number"
+                        disabled={false}
+                        autoFocus
+                        className="opt-container "
+                      ></OtpInput>
+                      <br />
+                      <button
+                        onClick={onOTPVerify}
+                        className="btn btn1 btn-outline-info center"
+                      >
+                        {loading && (
+                          <CgSpinner size={20} className="mt-1 animate-spin" />
+                        )}
+                        <span>Verify OTP</span>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <label
+                        htmlFor=""
+                        className="font-bold text-xl"
+                        style={{ paddingBottom: "5rem;" }}
+                      >
+                        Please enter your mobile number to <br />recieve a One Time Password
+                      </label>
+                      <div>
+                        <PhoneInput style={{ marginTop: "3rem" }} country={"in"} value={ph} onChange={setPh} />
+                        <br />
+                        <button
+                          onClick={onSignup}
+                          className="btn btn1 btn-outline-info center"
+                        >
+                          {loading && (
+                            <CgSpinner size={20} className="mt-1 animate-spin" />
+                          )}
+                          <span>Send OTP</span>
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
     </>
   );
 };
