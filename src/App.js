@@ -7,7 +7,7 @@ import "react-phone-input-2/lib/style.css";
 import { auth } from "./firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
-
+import './App.css';
 const App = () => {
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
@@ -68,29 +68,39 @@ const App = () => {
   }
 
   return (
-    <section className=" flex items-center justify-center h-screen" style={{backgroundColor:'black'}}>
-      <div>
+    <>
+     <nav class="navbar navbar-light bg-light justify-content-between">
+    <href class="text1 text3"><b>RealtyAi</b></href>
+  </nav>
+  <div>
+  <div class="row">
+    <div class="col">
+    <img style={{height:"500px"}} src="https://about.fb.com/wp-content/uploads/2018/03/screen-2x1.png?fit=1376%2C928" alt="signup"></img>
+    </div>
+    <div class="app1 col flex h-screen">
+    <div style={{marginLeft:"4rem", marginTop:"5rem", marginRight:"4rem"}}class="card">
         <Toaster toastOptions={{ duration: 4000 }} />
         <div id="recaptcha-container"></div>
         {user ? (
-          <h2 className="text-center text-white font-medium text-2xl">
-            Loggedin Successfully
+          <h2 style={{marginLeft:"2rem",marginTop:"4rem"}}className="font-medium text-2xl">
+            Login Successful
+            <br/><br/><br/><br/>
           </h2>
         ) : (
           <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
-            <h1 className="text-center leading-normal text-white font-medium text-3xl mb-6">
-              Welcome to <br /> Reality AI
-            </h1>
+            <h2>
+             SignUp-Login
+            </h2>
             {showOTP ? (
               <>
-                <div className="bg-white text-black-500 w-fit mx-auto p-4 rounded-full">
-                  <BsFillShieldLockFill size={30} />
-                </div>
                 <label
                   htmlFor="otp"
-                  className="font-bold text-xl text-white text-center"
+                  className="font-bold text-xl"
                 >
+                  <br/><br/>
+                  <br/><br/>
                   Enter your OTP
+                  <br/>
                 </label>
                 <OtpInput
                   value={otp}
@@ -101,9 +111,10 @@ const App = () => {
                   autoFocus
                   className="opt-container "
                 ></OtpInput>
+                <br/>
                 <button
                   onClick={onOTPVerify}
-                  className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                  className="btn btn1 btn-outline-info center"
                 >
                   {loading && (
                     <CgSpinner size={20} className="mt-1 animate-spin" />
@@ -113,31 +124,35 @@ const App = () => {
               </>
             ) : (
               <>
-                <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
-                  <BsTelephoneFill size={30} />
-                </div>
                 <label
                   htmlFor=""
-                  className="font-bold text-xl text-white text-center"
+                  className="font-bold text-xl"
+                  style={{paddingBottom:"5rem;"}}
                 >
-                  Enter your phone number
+                  Please enter your mobile number to <br/>recieve a One Time Password
                 </label>
-                <PhoneInput country={"in"} value={ph} onChange={setPh} />
+                <div>
+                <PhoneInput style={{marginTop:"3rem"}} country={"in"} value={ph} onChange={setPh} />
+                <br/>
                 <button
                   onClick={onSignup}
-                  className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                  className="btn btn1 btn-outline-info center"
                 >
                   {loading && (
                     <CgSpinner size={20} className="mt-1 animate-spin" />
                   )}
-                  <span>Send code via SMS</span>
+                  <span>Send OTP</span>
                 </button>
+                </div>
               </>
             )}
           </div>
         )}
       </div>
-    </section>
+    </div>
+  </div>
+</div>
+    </>
   );
 };
 
