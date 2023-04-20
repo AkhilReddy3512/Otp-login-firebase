@@ -57,7 +57,7 @@ const App = () => {
     window.confirmationResult
       .confirm(otp)
       .then(async (res) => {
-        console.log(res.metadata);
+        console.log(res);
         setUser(res.user);
         setLoading(false);
       })
