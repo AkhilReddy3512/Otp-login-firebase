@@ -31,8 +31,7 @@ const Login = () => {
         console.log(l.length)
         console.log(l)
         const handlechange = () => {
-            localStorage.setItem('content', JSON.stringify([]))
-            localStorage.setItem('image', JSON.stringify([]))
+           
             if (l.length !== 0) {
                 for (var i = 0; i < l.length; i++) {
                     if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
@@ -130,6 +129,8 @@ const Login = () => {
     }
 
     function onSignup() {
+        localStorage.setItem('content', JSON.stringify([]))
+        localStorage.setItem('image', JSON.stringify([]))
         setLoading(true);
         onCaptchVerify();
 
