@@ -123,7 +123,7 @@ const localitying=()=>{
    <ul style={{marginTop:"1vw" , width:"90%"}} className="dropdown-menu">
       
   <ul>
-        {JSON.parse(localStorage.getItem('content')).filter(
+        {JSON.parse(localStorage.getItem('content')).length!==0&&JSON.parse(localStorage.getItem('content')).filter(
       (item1) =>
       getKey(item1[0].fields).includes(searchQuery)|| (item1[0].fields[getKey(item1[0].fields)].includes(searchQuery)&&citing())|| (item1[1].fields[getKey(item1[1].fields)].includes(searchQuery)&&localitying())|| (item1[2].fields[getKey(item1[2].fields)].includes(searchQuery)&&areaing())
     ).map((item1, index) => (
