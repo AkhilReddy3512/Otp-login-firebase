@@ -173,7 +173,7 @@ const localitying=()=>{
    <div>
      <div className='container'>
       <div className='row'>
-    {JSON.parse(localStorage.getItem('content')).filter(
+    {JSON.parse(localStorage.getItem('content')).length!==0&&JSON.parse(localStorage.getItem('content')).filter(
   (item1) =>
   ((localtext===""&&areatext===""&&citytext==="")&&getKey(item1[0].fields).includes(id))||(citytext!==""&&item1[0].fields[getKey(item1[0].fields)].includes(citytext))||(localtext!==""&&item1[1].fields[getKey(item1[1].fields)].includes(localtext))||(areatext!==""&&item1[3].fields[getKey(item1[3].fields)].includes(areatext))
   ).map((item1, index) => {
