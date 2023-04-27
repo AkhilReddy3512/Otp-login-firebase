@@ -12,7 +12,7 @@ function Displaycard() {
     const mycontext=useContext(MyContext);
     const [searchQuery, setSearchQuery] = useState('');
     
-    const {getKey,fetchingdata,fetchfunction,projectdata}=mycontext
+    const {getKey,fetchingdata,fetchfunction,projectdata,setprojectdata}=mycontext
 
       const [id,setid]=useState("")
       const[area,setarea]=useState(0)
@@ -28,6 +28,7 @@ function Displaycard() {
 
   useEffect(()=>{
     const handlechanges = async () => {
+      setprojectdata([])
       let l = await fetchingdata()
       console.log(l.length)
       console.log(l)
