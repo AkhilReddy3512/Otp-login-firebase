@@ -145,7 +145,7 @@ const localitying=()=>{
    <ul style={{marginTop:"1vw" , width:"90%"}} className="dropdown-menu">
       
   <ul>
-        {projectdata.length!==0&&projectdata.filter(
+        {projectdata.filter(
       (item1) =>
       getKey(item1[0].fields).includes(searchQuery)|| (item1[0].fields[getKey(item1[0].fields)].includes(searchQuery)&&citing())|| (item1[1].fields[getKey(item1[1].fields)].includes(searchQuery)&&localitying())|| (item1[2].fields[getKey(item1[2].fields)].includes(searchQuery)&&areaing())
     ).map((item1, index) => (
@@ -195,7 +195,7 @@ const localitying=()=>{
    <div>
      <div className='container'>
       <div className='row'>
-    {projectdata.length!==0&&projectdata.filter(
+    {projectdata.filter(
   (item1) =>
   ((localtext===""&&areatext===""&&citytext==="")&&getKey(item1[0].fields).includes(id))||(citytext!==""&&item1[0].fields[getKey(item1[0].fields)].includes(citytext))||(localtext!==""&&item1[1].fields[getKey(item1[1].fields)].includes(localtext))||(areatext!==""&&item1[3].fields[getKey(item1[3].fields)].includes(areatext))
   ).map((item1, index) => {
