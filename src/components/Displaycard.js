@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React,{useEffect}from 'react'
 import MyContext from './context/Createcontext'
 import { useContext } from 'react';
 import Projectcard from './Projectcards';
@@ -13,7 +13,7 @@ function Displaycard() {
     const [searchQuery, setSearchQuery] = useState('');
     
     const {getKey,fetchingdata,fetchfunction,projectdata,setprojectdata}=mycontext
-    setprojectdata([])
+    //setprojectdata([])
       const [id,setid]=useState("")
       const[area,setarea]=useState(0)
       const[locality,setlocality]=useState(0)
@@ -25,24 +25,7 @@ function Displaycard() {
       
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
-  const handlechanges = async () => {
-        setprojectdata([])
-        let l = await fetchingdata()
-        console.log(l.length)
-        console.log(l)
-        const handlechange = () => {
-           
-            if (l.length !== 0) {
-                for (var i = 0; i < l.length; i++) {
-                    if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
-                        fetchfunction(l[i])
-                    }
-                }
-            }
-        }
-        handlechange()
-    }
-    handlechanges()
+
 
 
   // useEffect(()=>{
