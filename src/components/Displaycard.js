@@ -12,7 +12,7 @@ function Displaycard() {
     const mycontext=useContext(MyContext);
     const [searchQuery, setSearchQuery] = useState('');
     
-    const {getKey,projectdata}=mycontext
+    const {getKey,projectdata,setprojectdata,fetchfunction,fetchingdata}=mycontext
     //setprojectdata([])
       const [id,setid]=useState("")
       const[area,setarea]=useState(0)
@@ -25,6 +25,24 @@ function Displaycard() {
       
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
+    const handlechanges = async () => {
+        setprojectdata([])
+        let l = await fetchingdata()
+        console.log(l.length)
+        console.log(l)
+        const handlechange = () => {
+           
+            if (l.length !== 0) {
+                for (var i = 0; i < l.length; i++) {
+                    if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
+                        fetchfunction(l[i])
+                    }
+                }
+            }
+        }
+        handlechange()
+    }
+  
 
 
 
@@ -125,7 +143,7 @@ const localitying=()=>{
   </nav>
   <div className="App">
     <p className="text">Don't Buy Your Dream Home Without Expert Guidance</p>
-   
+   <button onClick={()=>{ handlechanges()}}></button>
     </div>
 
     <div>
