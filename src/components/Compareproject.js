@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Compareproject() {
     const mycontext=useContext(MyContext);
-    const {item1,setitem1,item2,setitem2,item3,setitem3,getKey,handlecompare,fetchingprojectdata,projectdata,coldata, setcoldata,free,setfree}=mycontext
+    const {item1,setitem1,item2,setitem2,item3,setitem3,getKey,handlecompare,fetchingprojectdata,projectdata,coldata, setcoldata}=mycontext
     const histroy=useNavigate();
     const[demo,setdemo]=useState(false)
     const addproject = () => {
