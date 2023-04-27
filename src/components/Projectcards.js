@@ -11,7 +11,7 @@ function Projectcard(props) {
  
    const addproject=async()=>{
    
-    localStorage.setItem('project',JSON.stringify([]))
+    //localStorage.setItem('project',JSON.stringify([]))
   //  fetchingprojectdata()
    
         if(item1===-1){

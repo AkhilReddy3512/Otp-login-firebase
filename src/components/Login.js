@@ -5,9 +5,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { auth } from "./firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import MyContext from './context/Createcontext'
 import { useNavigate } from 'react-router';
-import { useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,30 +19,29 @@ const Login = () => {
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'pathtvro7iNxp5yYN.69817a21c94ed77c049dca2361983216550ee535881f255333ebde130d41f299' }).base('appmLtIK7oUkAerdO');
 
-    const mycontext = useContext(MyContext);
 
-    const { fetchingdata, fetchfunction} = mycontext
+    //const { fetchingdata, fetchfunction} = mycontext
     const histroy = useNavigate();
 
-    const handlechanges = async () => {
-        let l = await fetchingdata()
-        console.log(l.length)
-        console.log(l)
-        const handlechange = () => {
+    // const handlechanges = async () => {
+    //     let l = await fetchingdata()
+    //     console.log(l.length)
+    //     console.log(l)
+    //     const handlechange = () => {
            
-            if (l.length !== 0) {
-                for (var i = 0; i < l.length; i++) {
-                    if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
-                        fetchfunction(l[i])
-                    }
-                }
-            }
-        }
-        handlechange()
-    }
+    //         if (l.length !== 0) {
+    //             for (var i = 0; i < l.length; i++) {
+    //                 if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
+    //                     fetchfunction(l[i])
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     handlechange()
+    // }
     const navigating = () => {
         if (localStorage.getItem('token')) {
-            handlechanges();
+           // handlechanges();
             histroy("/display");
         }
     }

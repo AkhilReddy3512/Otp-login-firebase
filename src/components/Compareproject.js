@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Compareproject() {
     const mycontext=useContext(MyContext);
-    const {item1,setitem1,item2,setitem2,item3,setitem3,getKey,handlecompare,fetchingprojectdata}=mycontext
+    const {item1,setitem1,item2,setitem2,item3,setitem3,getKey,handlecompare,fetchingprojectdata,projectdata,coldata, setcoldata}=mycontext
     const histroy=useNavigate();
     const[demo,setdemo]=useState(false)
     const addproject = () => {
@@ -28,9 +28,9 @@ function Compareproject() {
    
   
     const removeitem=async(index,setitem)=>{
-     const get=JSON.parse(localStorage.getItem('project'))
-     get.splice(index,1)
-     localStorage.setItem('project', JSON.stringify(get))
+
+     coldata.splice(index,1)
+     
       setitem(-1)
     }
     useEffect(()=>{
@@ -40,21 +40,21 @@ function Compareproject() {
      [])
    
     const compareproject=async()=>{
-              localStorage.setItem('project',JSON.stringify([]))
+              setcoldata([])
               await fetchingprojectdata()
              
             if(item1!==-1){
-            await handlecompare(getKey(JSON.parse(localStorage.getItem('content'))[item1][0].fields));
+            await handlecompare(getKey(projectdata[item1][0].fields));
             
             }
             if(item2!==-1){
-            await handlecompare(getKey(JSON.parse(localStorage.getItem('content'))[item2][0].fields))
+            await handlecompare(getKey(projectdata[item2][0].fields))
             }
             if(item3!==-1){
-             await handlecompare(getKey(JSON.parse(localStorage.getItem('content'))[item3][0].fields))
+             await handlecompare(getKey(projectdata[item3][0].fields))
             }
             console.log("helloosdjknsd")
-            console.log(JSON.parse(localStorage.getItem('project')))
+            console.log(coldata)
             setdemo(true)
             console.log(demo)
                
@@ -73,12 +73,12 @@ function Compareproject() {
     {item1!==-1?<div  style={{width: "18rem"}}>
 
 <div className="card" style={{width:"18rem", margin:"1rem"}}>
-<img src={JSON.parse(localStorage.getItem('image'))[item1][0].fields[getKey(JSON.parse(localStorage.getItem('image'))[item1][0].fields)]} className="card-img-top" alt="project"/>
+<img src={projectdata[item1][2].fields[getKey(projectdata[item1][2].fields)]} className="card-img-top" alt="project"/>
 <div className="card-body">
-<h2 className="card-title">{getKey(JSON.parse(localStorage.getItem('content'))[item1][0].fields)}</h2>
-<h5 className="card-title">{JSON.parse(localStorage.getItem('content'))[item1][0].fields[getKey(JSON.parse(localStorage.getItem('content'))[item1][0].fields)]}</h5>
-<h6 className="card-title">{JSON.parse(localStorage.getItem('content'))[item1][1].fields[getKey(JSON.parse(localStorage.getItem('content'))[item1][1].fields)]}</h6>
-<p className="card-title">{JSON.parse(localStorage.getItem('content'))[item1][3].fields[getKey(JSON.parse(localStorage.getItem('content'))[item1][3].fields)]}</p>
+<h2 className="card-title">{getKey(projectdata[item1][0].fields)}</h2>
+<h5 className="card-title">{projectdata[item1][0].fields[getKey(projectdata[item1][0].fields)]}</h5>
+<h6 className="card-title">{projectdata[item1][1].fields[getKey(projectdata[item1][1].fields)]}</h6>
+<p className="card-title">{projectdata[item1][3].fields[getKey(projectdata[item1][3].fields)]}</p>
 <button className="btn btn-outline-info center" onClick={()=>{removeitem(1,setitem1)}}>Remove</button>
 </div>
 </div>
@@ -102,12 +102,12 @@ function Compareproject() {
 {item2!==-1?<div  style={{width: "18rem"}}>
 
 <div className="card" style={{width:"18rem", margin:"1rem"}}>
-<img src={JSON.parse(localStorage.getItem('image'))[item2][0].fields[getKey(JSON.parse(localStorage.getItem('image'))[item2][0].fields)]} className="card-img-top" alt="project"/>
+<img src={projectdata[item2][2].fields[getKey(projectdata[item2][2].fields)]} className="card-img-top" alt="project"/>
 <div className="card-body">
-<h2 className="card-title">{getKey(JSON.parse(localStorage.getItem('content'))[item2][0].fields)}</h2>
-<h5 className="card-title">{JSON.parse(localStorage.getItem('content'))[item2][0].fields[getKey(JSON.parse(localStorage.getItem('content'))[item2][0].fields)]}</h5>
-<h6 className="card-title">{JSON.parse(localStorage.getItem('content'))[item2][1].fields[getKey(JSON.parse(localStorage.getItem('content'))[item2][1].fields)]}</h6>
-<p className="card-title">{JSON.parse(localStorage.getItem('content'))[item2][3].fields[getKey(JSON.parse(localStorage.getItem('content'))[item2][3].fields)]}</p>
+<h2 className="card-title">{getKey(projectdata[item2][0].fields)}</h2>
+<h5 className="card-title">{projectdata[item2][0].fields[getKey(projectdata[item2][0].fields)]}</h5>
+<h6 className="card-title">{projectdata[item2][1].fields[getKey(projectdata[item2][1].fields)]}</h6>
+<p className="card-title">{projectdata[item2][3].fields[getKey(projectdata[item2][3].fields)]}</p>
 <button className="btn btn-outline-info center" onClick={()=>{removeitem(2,setitem2)}}>Remove</button>
 </div>
 </div>
@@ -131,12 +131,12 @@ function Compareproject() {
 {item3!==-1?<div  style={{width: "18rem"}}>
 
 <div className="card" style={{width:"18rem", margin:"1rem"}}>
-<img src={JSON.parse(localStorage.getItem('image'))[item3][0].fields[getKey(JSON.parse(localStorage.getItem('image'))[item3][0].fields)]} className="card-img-top" alt="project"/>
+<img src={projectdata[item3][2].fields[getKey(projectdata[item3][2].fields)]} className="card-img-top" alt="project"/>
 <div className="card-body">
-<h2 className="card-title">{getKey(JSON.parse(localStorage.getItem('content'))[item3][0].fields)}</h2>
-<h5 className="card-title">{JSON.parse(localStorage.getItem('content'))[item3][0].fields[getKey(JSON.parse(localStorage.getItem('content'))[item3][0].fields)]}</h5>
-<h6 className="card-title">{JSON.parse(localStorage.getItem('content'))[item3][1].fields[getKey(JSON.parse(localStorage.getItem('content'))[item3][1].fields)]}</h6>
-<p className="card-title">{JSON.parse(localStorage.getItem('content'))[item3][3].fields[getKey(JSON.parse(localStorage.getItem('content'))[item3][3].fields)]}</p>
+<h2 className="card-title">{getKey(projectdata[item3][0].fields)}</h2>
+<h5 className="card-title">{projectdata[item3][0].fields[getKey(projectdata[item3][0].fields)]}</h5>
+<h6 className="card-title">{projectdata[item3][1].fields[getKey(projectdata[item3][1].fields)]}</h6>
+<p className="card-title">{projectdata[item3][3].fields[getKey(projectdata[item3][3].fields)]}</p>
 <button className="btn btn-outline-info center" onClick={()=>{removeitem(3,setitem3)}}>Remove</button>
 </div>
 </div>
@@ -163,25 +163,25 @@ function Compareproject() {
 <div className= "container">
 <div className="row">
 <div className="line"/>
- {(JSON.parse(localStorage.getItem('project')).length>0&&JSON.parse(localStorage.getItem('project')).length<5)&&JSON.parse(localStorage.getItem('project'))[0].map((each,index)=>{
+ {(coldata.length>0&&coldata.length<5)&&coldata[0].map((each,index)=>{
     return <>
     <div className="container text-center">
    <div className="row"> 
     <div className="col">
-   <h3 className="text4">{getKey(JSON.parse(localStorage.getItem('project'))[0][index].fields)!==undefined?JSON.parse(localStorage.getItem('project'))[0][index].fields[getKey(JSON.parse(localStorage.getItem('project'))[0][index].fields)]:<br></br>}</h3>
+   <h3 className="text4">{getKey(coldata[0][index].fields)!==undefined?coldata[0][index].fields[getKey(coldata[0][index].fields)]:<br></br>}</h3>
    </div>
    </div>
    
    
- {JSON.parse(localStorage.getItem('project')).length>1&&<div className="row"> 
-   {JSON.parse(localStorage.getItem('project')).length>=2&&<div className="col">
-    <p className="text5">{getKey(JSON.parse(localStorage.getItem('project'))[1][index].fields)!==undefined?JSON.parse(localStorage.getItem('project'))[1][index].fields[getKey(JSON.parse(localStorage.getItem('project'))[1][index].fields)]:<br></br>}</p>
+ {coldata.length>1&&<div className="row"> 
+   {coldata.length>=2&&<div className="col">
+    <p className="text5">{getKey(coldata[1][index].fields)!==undefined?coldata[1][index].fields[getKey(coldata[1][index].fields)]:<br></br>}</p>
     </div>}
-    {JSON.parse(localStorage.getItem('project')).length>=3&&<div className="col">
-    <p className="text5">{getKey(JSON.parse(localStorage.getItem('project'))[2][index].fields)!==undefined?JSON.parse(localStorage.getItem('project'))[2][index].fields[getKey(JSON.parse(localStorage.getItem('project'))[2][index].fields)]:<br></br>}</p>
+    {coldata.length>=3&&<div className="col">
+    <p className="text5">{getKey(coldata[2][index].fields)!==undefined?coldata[2][index].fields[getKey(coldata[2][index].fields)]:<br></br>}</p>
     </div>}
-    {JSON.parse(localStorage.getItem('project')).length===4&&<div className="col">
-    <p className="text5">{getKey(JSON.parse(localStorage.getItem('project'))[3][index].fields)!==undefined?JSON.parse(localStorage.getItem('project'))[3][index].fields[getKey(JSON.parse(localStorage.getItem('project'))[3][index].fields)]:<br></br>}</p>
+    {coldata.length===4&&<div className="col">
+    <p className="text5">{getKey(coldata[3][index].fields)!==undefined?coldata[3][index].fields[getKey(coldata[3][index].fields)]:<br></br>}</p>
     </div>}
   </div>}
 </div>

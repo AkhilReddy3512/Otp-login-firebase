@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MyContext from './context/Createcontext'
 import { useContext } from 'react';
 import Projectcard from './Projectcards';
@@ -12,7 +12,7 @@ function Displaycard() {
     const mycontext=useContext(MyContext);
     const [searchQuery, setSearchQuery] = useState('');
     
-    const {getKey}=mycontext
+    const {getKey,fetchingdata,fetchfunction,projectdata}=mycontext
 
       const [id,setid]=useState("")
       const[area,setarea]=useState(0)
@@ -26,7 +26,28 @@ function Displaycard() {
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
 
-     
+  useEffect(()=>{
+    const handlechanges = async () => {
+      let l = await fetchingdata()
+      console.log(l.length)
+      console.log(l)
+      const handlechange = () => {
+         
+          if (l.length !== 0) {
+              for (var i = 0; i < l.length; i++) {
+                  if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
+                      fetchfunction(l[i])
+                  }
+              }
+          }
+      }
+      handlechange()
+  }
+  handlechanges()
+  },
+  // eslint-disable-next-line
+  []
+  )
   const citing=()=>{
     if(city===0){
       setcity(1)
@@ -123,7 +144,7 @@ const localitying=()=>{
    <ul style={{marginTop:"1vw" , width:"90%"}} className="dropdown-menu">
       
   <ul>
-        {JSON.parse(localStorage.getItem('content')).length!==0&&JSON.parse(localStorage.getItem('content')).filter(
+        {projectdata.length!==0&&projectdata.filter(
       (item1) =>
       getKey(item1[0].fields).includes(searchQuery)|| (item1[0].fields[getKey(item1[0].fields)].includes(searchQuery)&&citing())|| (item1[1].fields[getKey(item1[1].fields)].includes(searchQuery)&&localitying())|| (item1[2].fields[getKey(item1[2].fields)].includes(searchQuery)&&areaing())
     ).map((item1, index) => (
@@ -144,13 +165,13 @@ const localitying=()=>{
       </ul>
     <div style={{marginLeft:"1vw", marginRight:"1vw"}}>
         <h5 style={{color:"rgb(53, 193, 248)"}} >Recommended cities localities and areas</h5>
-      {city===1&&JSON.parse(localStorage.getItem('content')).map((item2)=>{
+      {city===1&&projectdata.map((item2)=>{
                     return<li className="hover" onClick={()=>{citingtext(item2[0].fields[getKey(item2[0].fields)])}}><p>{item2[0].fields[getKey(item2[0].fields)]}</p><hr/></li>
           })}
-           {locality===1&&JSON.parse(localStorage.getItem('content')).map((item2)=>{
+           {locality===1&&projectdata.map((item2)=>{
                     return <li className="hover" onClick={()=>{localingtext(item2[1].fields[getKey(item2[1].fields)])}}><p>{item2[1].fields[getKey(item2[1].fields)]}</p><hr/></li>
           })}
-           {area===1&&JSON.parse(localStorage.getItem('content')).map((item2)=>{
+           {area===1&&projectdata.map((item2)=>{
                     return <li className="hover" onClick={()=>{areaingtext(item2[3].fields[getKey(item2[3].fields)])}}><p>{item2[3].fields[getKey(item2[3].fields)]}</p><hr/></li>
           })}
         
@@ -173,7 +194,7 @@ const localitying=()=>{
    <div>
      <div className='container'>
       <div className='row'>
-    {JSON.parse(localStorage.getItem('content')).length!==0&&JSON.parse(localStorage.getItem('content')).filter(
+    {projectdata.length!==0&&projectdata.filter(
   (item1) =>
   ((localtext===""&&areatext===""&&citytext==="")&&getKey(item1[0].fields).includes(id))||(citytext!==""&&item1[0].fields[getKey(item1[0].fields)].includes(citytext))||(localtext!==""&&item1[1].fields[getKey(item1[1].fields)].includes(localtext))||(areatext!==""&&item1[3].fields[getKey(item1[3].fields)].includes(areatext))
   ).map((item1, index) => {
