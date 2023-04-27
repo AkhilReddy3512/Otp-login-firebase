@@ -19,7 +19,7 @@ const Login = () => {
     const [showOTP, setShowOTP] = useState(false);
     const mycontext=useContext(MyContext);
     const [user, setUser] = useState();
-    const {getKey,fetchingdata,fetchfunction,projectdata,setprojectdata}=mycontext
+    const {fetchingdata,fetchfunction}=mycontext
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'pathtvro7iNxp5yYN.69817a21c94ed77c049dca2361983216550ee535881f255333ebde130d41f299' }).base('appmLtIK7oUkAerdO');
 

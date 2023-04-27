@@ -1,4 +1,4 @@
-import React,{useEffect}from 'react'
+import React from 'react'
 import MyContext from './context/Createcontext'
 import { useContext } from 'react';
 import Projectcard from './Projectcards';
@@ -12,7 +12,7 @@ function Displaycard() {
     const mycontext=useContext(MyContext);
     const [searchQuery, setSearchQuery] = useState('');
     
-    const {getKey,fetchingdata,fetchfunction,projectdata,setprojectdata}=mycontext
+    const {getKey,projectdata}=mycontext
     //setprojectdata([])
       const [id,setid]=useState("")
       const[area,setarea]=useState(0)
