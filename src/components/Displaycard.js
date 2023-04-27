@@ -25,30 +25,49 @@ function Displaycard() {
       
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
+  const handlechanges = async () => {
+        setprojectdata([])
+        let l = await fetchingdata()
+        console.log(l.length)
+        console.log(l)
+        const handlechange = () => {
+           
+            if (l.length !== 0) {
+                for (var i = 0; i < l.length; i++) {
+                    if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
+                        fetchfunction(l[i])
+                    }
+                }
+            }
+        }
+        handlechange()
+    }
+    handlechanges()
 
-  useEffect(()=>{
-    const handlechanges = async () => {
-      setprojectdata([])
-      let l = await fetchingdata()
-      console.log(l.length)
-      console.log(l)
-      const handlechange = () => {
+
+  // useEffect(()=>{
+  //   const handlechanges = async () => {
+  //     setprojectdata([])
+  //     let l = await fetchingdata()
+  //     console.log(l.length)
+  //     console.log(l)
+  //     const handlechange = () => {
          
-          if (l.length !== 0) {
-              for (var i = 0; i < l.length; i++) {
-                  if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
-                      fetchfunction(l[i])
-                  }
-              }
-          }
-      }
-      handlechange()
-  }
-  handlechanges()
-  },
-  // eslint-disable-next-line
-  []
-  )
+  //         if (l.length !== 0) {
+  //             for (var i = 0; i < l.length; i++) {
+  //                 if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
+  //                     fetchfunction(l[i])
+  //                 }
+  //             }
+  //         }
+  //     }
+  //     handlechange()
+  // }
+  // handlechanges()
+  // },
+  // // eslint-disable-next-line
+  // []
+  // )
   const citing=()=>{
     if(city===0){
       setcity(1)
