@@ -13,7 +13,7 @@ function Displaycard() {
     const [searchQuery, setSearchQuery] = useState('');
     
     const {getKey,fetchingdata,fetchfunction,projectdata,setprojectdata}=mycontext
-
+    setprojectdata([])
       const [id,setid]=useState("")
       const[area,setarea]=useState(0)
       const[locality,setlocality]=useState(0)
