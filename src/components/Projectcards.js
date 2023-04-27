@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 function Projectcard(props) {
     const mycontext=useContext(MyContext);
-   const {getKey,item1,setitem1,item2,setitem2,item3,setitem3}=mycontext
+   const {getKey,item1,setitem1,item2,setitem2,item3,setitem3,free,setfree}=mycontext
    
    const histroy=useNavigate();
  
@@ -13,6 +13,9 @@ function Projectcard(props) {
    
     //localStorage.setItem('project',JSON.stringify([]))
   //  fetchingprojectdata()
+  console.log("fklgjnafkljnbdfj")
+  console.log(free)
+       if((localStorage.getItem('free'))>0||(localStorage.getItem('Verify')==='Paid')){
    
         if(item1===-1){
             setitem1(props.index);
@@ -34,6 +37,12 @@ function Projectcard(props) {
        
 
    }
+   setfree(free-1)
+   const l=localStorage.getItem('free')
+   localStorage.setItem('free',l-1)
+
+   console.log(free)
+  }
     
   return (
     <>

@@ -47,24 +47,26 @@ function Displaycard() {
 
 
   useEffect(()=>{
-    const handlechanges = async () => {
-      setprojectdata([])
-      let l = await fetchingdata()
-      console.log(l.length)
-      console.log(l)
-      const handlechange = () => {
-         
-          if (l.length !== 0) {
-              for (var i = 0; i < l.length; i++) {
-                  if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
-                      fetchfunction(l[i])
-                  }
-              }
-          }
-      }
-      handlechange()
-  }
-  handlechanges()
+    if(projectdata.length===0){
+      const handlechanges = async () => {
+        setprojectdata([])
+        let l = await fetchingdata()
+        console.log(l.length)
+        console.log(l)
+        const handlechange = () => {
+           
+            if (l.length !== 0) {
+                for (var i = 0; i < l.length; i++) {
+                    if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
+                        fetchfunction(l[i])
+                    }
+                }
+            }
+        }
+        handlechange()
+    }
+    handlechanges()
+    }
   },
   // eslint-disable-next-line
   []

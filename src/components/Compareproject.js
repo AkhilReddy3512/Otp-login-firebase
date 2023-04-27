@@ -9,18 +9,28 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Compareproject() {
     const mycontext=useContext(MyContext);
-    const {item1,setitem1,item2,setitem2,item3,setitem3,getKey,handlecompare,fetchingprojectdata,projectdata,coldata, setcoldata}=mycontext
+    const {item1,setitem1,item2,setitem2,item3,setitem3,getKey,handlecompare,fetchingprojectdata,projectdata,coldata, setcoldata,free,setfree}=mycontext
     const histroy=useNavigate();
     const[demo,setdemo]=useState(false)
     const addproject = () => {
       const a = localStorage.getItem('token')
       const b = localStorage.getItem('Verify')
+      const c=localStorage.getItem('free')
+      console.log(c)
       if(a==="null" ){
         toast.warning("Please Signin to Continue!!")
       }
-      else if(b === 'NotPaid'){
-        toast.warning("Please Subscribe to continue!!")
+      else if(c<=0){
+        toast.warning("your free trail is completed!!")
+        if(b === 'NotPaid'){
+          toast.warning("Please Subscribe to continue!!")
+        }
+        else{
+          histroy("/display")
+        }
       }
+     
+      
       else{
         histroy("/display")
       }

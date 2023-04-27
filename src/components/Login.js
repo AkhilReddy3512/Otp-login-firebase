@@ -5,8 +5,8 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { auth } from "./firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-// import MyContext from './context/Createcontext'
-// import { useContext } from 'react';
+import MyContext from './context/Createcontext'
+import { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,14 +17,13 @@ const Login = () => {
     const [imagebg, setImagebg] = useState("cuate.png");
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
-    //const mycontext=useContext(MyContext);
+    const mycontext=useContext(MyContext);
     const [user, setUser] = useState();
-   // const {fetchingdata,fetchfunction}=mycontext
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'pathtvro7iNxp5yYN.69817a21c94ed77c049dca2361983216550ee535881f255333ebde130d41f299' }).base('appmLtIK7oUkAerdO');
 
 
-    //const { fetchingdata, fetchfunction} = mycontext
+    const {setfree} = mycontext
     const histroy = useNavigate();
 
     // const handlechanges = async () => {
@@ -59,7 +58,14 @@ const Login = () => {
                     Product2: "01/01/2020",
                     Product3: "01/01/2020",
                     Product4: "01/01/2020",
-                    Product5: "01/01/2020"
+                    Product5: "01/01/2020",
+                    Product1freetrail:5,
+                    Product2freetrail:5,
+                    Product3freetrail:5,
+                    Product4freetrail:5,
+                    Product5freetrail:5
+                    
+
                 }
             }
         ], function (err, records) {
@@ -104,6 +110,9 @@ const Login = () => {
                 else {
                     localStorage.setItem('Verify', 'Paid')
                 }
+                console.log(records[0].fields.Product1freetrail)
+                localStorage.setItem('free',records[0].fields.Product1freetrail)
+               // setfree(records[0].fields.Product1freetrail)
                 return true
             } else {
                 await handleSubmit(phonenumber)
@@ -168,7 +177,9 @@ const Login = () => {
                 console.log(user)
                 if ((serachrecord(res._tokenResponse.phoneNumber)) === false) {
                     handleSubmit(res._tokenResponse.phoneNumber)
-                    localStorage.setItem('Verify', 'NotPaid')
+                   // setfree(5)
+                   localStorage.setItem('free',5)
+                   // localStorage.setItem('Verify', 'Paid')
                 }
                 //handleSubmit(res._tokenResponse.phoneNumber)
                 localStorage.setItem('token', res.user.accessToken)

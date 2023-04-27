@@ -10,6 +10,7 @@ const DataFetching = (props) => {
     const [item3,setitem3]=useState(-1)
     const[able,setable]=useState(false)
     const[coldata,setcoldata]=useState([])
+    const[free,setfree]=useState(0)
    
     const fetchingdata=async(setdata)=>{
        const url = `https://api.airtable.com/v0/appI2TY2F0bnyL4rm/Comparision%20Table/recsUvOBrpMGxDQnC?api_key=key3rcNBRgJ2iurx4`;
@@ -90,7 +91,7 @@ const DataFetching = (props) => {
     }
 
 
-   return(<MyContext.Provider value={{comparedata,setcomparedata,columnNames,setColumnNames,fetchingdata,fetchingdata1,handlecompare,projectdata,getKey,fetchfunction,item1,setitem1,item2,setitem2,item3,setitem3,able,setable,setprojectdata,fetchingprojectdata,coldata,setcoldata}}>
+   return(<MyContext.Provider value={{comparedata,setcomparedata,columnNames,setColumnNames,fetchingdata,fetchingdata1,handlecompare,projectdata,getKey,fetchfunction,item1,setitem1,item2,setitem2,item3,setitem3,able,setable,setprojectdata,fetchingprojectdata,coldata,setcoldata,free,setfree}}>
        {props.children}
 </MyContext.Provider>);
 }
