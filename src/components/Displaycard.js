@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import MyContext from './context/Createcontext'
 import { useContext } from 'react';
 import Projectcard from './Projectcards';
@@ -25,50 +25,50 @@ function Displaycard() {
       
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
-    const handlechanges = async () => {
-        setprojectdata([])
-        let l = await fetchingdata()
-        console.log(l.length)
-        console.log(l)
-        const handlechange = () => {
+  //   const handlechanges = async () => {
+  //       setprojectdata([])
+  //       let l = await fetchingdata()
+  //       console.log(l.length)
+  //       console.log(l)
+  //       const handlechange = () => {
            
-            if (l.length !== 0) {
-                for (var i = 0; i < l.length; i++) {
-                    if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
-                        fetchfunction(l[i])
-                    }
-                }
-            }
-        }
-        handlechange()
-    }
+  //           if (l.length !== 0) {
+  //               for (var i = 0; i < l.length; i++) {
+  //                   if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
+  //                       fetchfunction(l[i])
+  //                   }
+  //               }
+  //           }
+  //       }
+  //       handlechange()
+  //   }
   
 
 
 
-  // useEffect(()=>{
-  //   const handlechanges = async () => {
-  //     setprojectdata([])
-  //     let l = await fetchingdata()
-  //     console.log(l.length)
-  //     console.log(l)
-  //     const handlechange = () => {
+  useEffect(()=>{
+    const handlechanges = async () => {
+      setprojectdata([])
+      let l = await fetchingdata()
+      console.log(l.length)
+      console.log(l)
+      const handlechange = () => {
          
-  //         if (l.length !== 0) {
-  //             for (var i = 0; i < l.length; i++) {
-  //                 if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
-  //                     fetchfunction(l[i])
-  //                 }
-  //             }
-  //         }
-  //     }
-  //     handlechange()
-  // }
-  // handlechanges()
-  // },
-  // // eslint-disable-next-line
-  // []
-  // )
+          if (l.length !== 0) {
+              for (var i = 0; i < l.length; i++) {
+                  if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
+                      fetchfunction(l[i])
+                  }
+              }
+          }
+      }
+      handlechange()
+  }
+  handlechanges()
+  },
+  // eslint-disable-next-line
+  []
+  )
   const citing=()=>{
     if(city===0){
       setcity(1)
@@ -143,7 +143,7 @@ const localitying=()=>{
   </nav>
   <div className="App">
     <p className="text">Don't Buy Your Dream Home Without Expert Guidance</p>
-   <button onClick={()=>{ handlechanges()}}></button>
+   {/* <button onClick={()=>{ handlechanges()}}></button> */}
     </div>
 
     <div>
