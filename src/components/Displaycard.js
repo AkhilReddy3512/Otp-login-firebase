@@ -150,7 +150,16 @@ function Displaycard() {
     <>
       <nav className="navbar fixed-top navbar-light bg-light justify-content-between">
         <h1 className="text1 text3"><b>RealtyAi</b></h1>
-        <button className="btn text2" type="submit"><CgProfile /></button>
+        <div className="dropdown" >
+          <button className="btn text2 dropdown" style={{marginRight:"30px"}} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <CgProfile />
+          </button>
+          <ul className="dropdown-menu">
+            <li><CgProfile style={{margin:"2%"}} /> {localStorage.getItem('phone')}</li>
+            <hr />
+            <li><button className='btn btn-outline-info mx-3' style={{width:"80%"}} onClick={localStorage.setItem('token','null')}>Log Out</button></li>
+          </ul>
+        </div>
       </nav>
       <div className="App">
         <p className="text">Don't Buy Your Dream Home Without Expert Guidance</p>
