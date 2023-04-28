@@ -117,6 +117,7 @@ const Login = () => {
             } else {
                 await handleSubmit(phonenumber)
                 localStorage.setItem('Verify', 'NotPaid')
+                localStorage.setItem('free',5)
                 return false
             }
         });
@@ -178,7 +179,6 @@ const Login = () => {
                 if ((serachrecord(res._tokenResponse.phoneNumber)) === false) {
                     handleSubmit(res._tokenResponse.phoneNumber)
                    // setfree(5)
-                   localStorage.setItem('free',5)
                    // localStorage.setItem('Verify', 'Paid')
                 }
                 //handleSubmit(res._tokenResponse.phoneNumber)
@@ -203,10 +203,10 @@ const Login = () => {
             <div className="App">
                 <div className="row">
                     <div className="col">
-                        <center><img style={{ width: "26rem", marginTop: "10%", height: 'auto' }} src={imagebg} alt="signup" /></center>
+                        <center><img style={{ minWidth:"20rem", width:"60%", height: 'auto' , marginBottom:"10vw", marginTop:"10vw"}} src={imagebg} alt="signup" /></center>
                     </div>
                     <div className="app1 col flex h-screen">
-                        <div style={{ marginTop: "5rem", marginBottom: "5rem", marginRight: "10%", width: "80%", marginLeft: "10%", minWidth: "20rem", opacity: "0.8" }} className="card">
+                        <div style={{ marginTop: "7rem", marginBottom: "5rem", marginRight: "auto", width: "80%", marginLeft: "auto", minWidth: "20rem", opacity: "0.8" }} className="card">
                             {/* <Toaster toastOptions={{
                                 duration: 4000,
                                 success: { style: { background: 'green', color: 'white' } },
@@ -220,15 +220,16 @@ const Login = () => {
                                     <br /><br /><br /><br />
                                 </h2>
                             ) : (
-                                <div className="w-80 flex flex-col gap-4 rounded-lg p-4" style={{ marginLeft: "5%", marginTop: "5%" }}>
-                                    <h2>
-                                        SignUp-Login
+                                <div className="w-80 flex flex-col gap-4 rounded-lg p-4" style={{ marginLeft: "9%", marginTop: "7%" }}>
+                                    <h2 style={{marginLeft:"7%",color:"black"}}>
+                                        <b>SignUp-Login</b>
                                     </h2>
                                     {showOTP ? (
                                         <>
                                             <label
                                                 htmlFor="otp"
                                                 className="font-bold text-xl"
+                                                style={{color:"black"}}
                                             >
                                                 <br /><br />
                                                 <br /><br />
@@ -249,7 +250,7 @@ const Login = () => {
                                             <br /><br /><br />
                                             <button
                                                 onClick={onOTPVerify}
-                                                className="btn btn1 btn-outline-info center"
+                                                className="btn btn1 btn-outline-secondary center"
                                             >
                                                 {loading && (
                                                     <CgSpinner size={20} className="mt-1 animate-spin" />
@@ -262,16 +263,17 @@ const Login = () => {
                                             <label
                                                 htmlFor=""
                                                 className="font-bold text-xl"
-                                                style={{ paddingBottom: "1rem" }}
+                                                style={{ paddingBottom: "1rem" , marginLeft:"7%", color:"black"}}
                                             >
-                                                Please enter your mobile number to <br />recieve a One Time Password
+                                                Please enter your mobile number  <br /> to recieve a One Time Password
                                             </label>
-                                            <div>
-                                                <PhoneInput style={{ marginTop: "3rem", height: "50%" }} country={"in"} value={ph} onChange={setPh} />
+                                            <div className="container">
+                                                <PhoneInput inputStyle={{width:"80%", height:"40px"}} style={{marginLeft:"5%"}} country={"in"} value={ph} onChange={setPh} />
                                                 <br /><br /><br /><br /><br /><br /><br />
                                                 <button
                                                     onClick={onSignup}
-                                                    className="btn btn1 btn-outline-info center"
+                                                    className="btn btn1 btn-outline-secondary center"
+                                                    style={{marginBottom:"4vw"}}
                                                 >
                                                     {loading && (
                                                         <CgSpinner size={20} className="mt-1 animate-spin" />

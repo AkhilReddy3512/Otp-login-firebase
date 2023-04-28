@@ -23,19 +23,31 @@ const DataFetching = (props) => {
       
      const recordFields = parsedData.fields;
      const columns = Object.keys(recordFields);
+     columns.sort();
+      let l=[]
+     
+      for(var i=0;i<columns.length;i++){
+                 if(columns[i]!=="Field1"&&columns[i]!=="ProjectName"){
+                  l.push(columns[i])
+                 }
+      }
+     if(comparedata.length===0){
+      setcomparedata([...comparedata,l])
+    }
      return columns
     
    }
-   const fetchingdata1=async()=>{
-       const url = `https://api.airtable.com/v0/appI2TY2F0bnyL4rm/Comparision%20Table?fields%5B%5D=fldlRyR54qzwHyEIs&view=Grid%20view&api_key=key3rcNBRgJ2iurx4`;
+  //  const fetchingdata1=async()=>{
+  //      const url = `https://api.airtable.com/v0/appI2TY2F0bnyL4rm/Comparision%20Table?fields%5B%5D=fldlRyR54qzwHyEIs&view=Grid%20view&api_key=key3rcNBRgJ2iurx4`;
        
-       let data = await fetch(url);
+  //      let data = await fetch(url);
       
-     let parsedData = await data.json();
+  //    let parsedData = await data.json();
       
-       setcomparedata(parsedData.records);
-       console.log(comparedata)
-      }
+  //      setcomparedata(parsedData.records);
+  //      console.log(comparedata)
+  //     }
+
       const handlecompare=async(item1)=>{
        const url = `https://api.airtable.com/v0/appI2TY2F0bnyL4rm/Comparision%20Table?fields%5B%5D=${item1}&filterByFormula=NOT({Field1}="image")&view=Grid%20view&api_key=key3rcNBRgJ2iurx4`;
      
@@ -91,7 +103,7 @@ const DataFetching = (props) => {
     }
 
 
-   return(<MyContext.Provider value={{comparedata,setcomparedata,columnNames,setColumnNames,fetchingdata,fetchingdata1,handlecompare,projectdata,getKey,fetchfunction,item1,setitem1,item2,setitem2,item3,setitem3,able,setable,setprojectdata,fetchingprojectdata,coldata,setcoldata,free,setfree}}>
+   return(<MyContext.Provider value={{comparedata,setcomparedata,columnNames,setColumnNames,fetchingdata,handlecompare,projectdata,getKey,fetchfunction,item1,setitem1,item2,setitem2,item3,setitem3,able,setable,setprojectdata,fetchingprojectdata,coldata,setcoldata,free,setfree}}>
        {props.children}
 </MyContext.Provider>);
 }
