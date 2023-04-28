@@ -8,7 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 function Projectcard(props) {
   const mycontext = useContext(MyContext);
   const { getKey, item1, setitem1, item2, setitem2, item3, setitem3, free, setfree, comparedata} = mycontext
-
+  var Airtable = require('airtable');
+    var base = new Airtable({ apiKey: 'pathtvro7iNxp5yYN.69817a21c94ed77c049dca2361983216550ee535881f255333ebde130d41f299' }).base('appmLtIK7oUkAerdO');
   const histroy = useNavigate();
   if (localStorage.getItem('token')===null){
     localStorage.setItem('token',"null")
@@ -43,9 +44,36 @@ function Projectcard(props) {
       setfree(free - 1)
       const l = localStorage.getItem('free')
       localStorage.setItem('free', l - 1)
+      const updatefunc = (date,phone) => {
+        base('Table 1').select({
+            filterByFormula: `{Name} = '${phone}'`
+        }).eachPage(function page(records, fetchNextPage) {
+            records.forEach(function (record) {
+                // Update the fields of the record
+                base('Table 1').update([
+                    {
+                        "id": record.id,
+                        "fields": {
+                            'Product1freetrail': date
+                        }
+                    }
+                ], function (err, records) {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+                });
+            });
+            fetchNextPage();
+        }, function done(err) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+        });
+      }
+      updatefunc(l-1,localStorage.getItem('phone'));
       histroy("/compare");
-
-
     }
     else{
       toast.warning("Your free trail is completed!!")
@@ -75,3 +103,5 @@ function Projectcard(props) {
 }
 
 export default Projectcard;
+
+

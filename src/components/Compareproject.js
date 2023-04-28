@@ -14,23 +14,11 @@ function Compareproject() {
     const[demo,setdemo]=useState(false)
     const addproject = () => {
       const a = localStorage.getItem('token')
-      const b = localStorage.getItem('Verify')
       const c=localStorage.getItem('free')
       console.log(c)
       if(a==="null" ){
         toast.warning("Please Signin to Continue!!")
       }
-      else if(c<=0){
-        toast.warning("your free trail is completed!!")
-        if(b === 'NotPaid'){
-          toast.warning("Please Subscribe to continue!!")
-        }
-        else{
-          histroy("/display")
-        }
-      }
-     
-      
       else{
         histroy("/display")
       }
@@ -73,19 +61,20 @@ function Compareproject() {
   return ( 
     <>
     <ToastContainer autoClose={4000} position="top-center" pauseOnHover={false} closeOnClick theme="colored" />
-     <nav className="navbar navbar-light bg-light justify-content-between">
+    <nav className="navbar navbar-light bg-light justify-content-between">
     <href className="text1 text3"><b>RealtyAi</b></href>
     <button className="btn text2" type="submit"><CgProfile/></button>
   </nav>
   <div className='container'>
-  <div className='row'>
+    <center>
+  <div className='row' style={{marginTop:"6rem"}}>
     <div className="col-md-4 my-3">
     {item1!==-1?<div  style={{width: "18rem"}}>
 
-<div className="card" style={{width:"18rem", margin:"1rem"}}>
+<div className="card" style={{width:"18rem"}}>
 <img src={projectdata[item1][2].fields[getKey(projectdata[item1][2].fields)]} className="card-img-top" alt="project"/>
 <div className="card-body">
-<h2 className="card-title">{getKey(projectdata[item1][0].fields)}</h2>
+<h5 className="card-title"><b>{getKey(projectdata[item1][0].fields)}</b></h5>
 <h5 className="card-title">{projectdata[item1][0].fields[getKey(projectdata[item1][0].fields)]}</h5>
 <h6 className="card-title">{projectdata[item1][1].fields[getKey(projectdata[item1][1].fields)]}</h6>
 <p className="card-title">{projectdata[item1][3].fields[getKey(projectdata[item1][3].fields)]}</p>
@@ -95,7 +84,7 @@ function Compareproject() {
 </div>:
 <div  style={{width: "18rem"}}>
 
-<div style={{width:"18rem", margin:"1rem"}}>
+<div style={{width:"18rem"}}>
   
 <button className="btn btn-outline-info center" onClick={()=>{addproject()}}>
 <br/><br/><br/>
@@ -111,10 +100,10 @@ function Compareproject() {
 <div className="col-md-4 my-3">
 {item2!==-1?<div  style={{width: "18rem"}}>
 
-<div className="card" style={{width:"18rem", margin:"1rem"}}>
+<div className="card" style={{width:"18rem"}}>
 <img src={projectdata[item2][2].fields[getKey(projectdata[item2][2].fields)]} className="card-img-top" alt="project"/>
 <div className="card-body">
-<h2 className="card-title">{getKey(projectdata[item2][0].fields)}</h2>
+<h5 className="card-title"><b>{getKey(projectdata[item2][0].fields)}</b></h5>
 <h5 className="card-title">{projectdata[item2][0].fields[getKey(projectdata[item2][0].fields)]}</h5>
 <h6 className="card-title">{projectdata[item2][1].fields[getKey(projectdata[item2][1].fields)]}</h6>
 <p className="card-title">{projectdata[item2][3].fields[getKey(projectdata[item2][3].fields)]}</p>
@@ -124,7 +113,7 @@ function Compareproject() {
 </div>:
 <div  style={{width: "18rem"}}>
 
-<div style={{width:"18rem", margin:"1rem"}}>
+<div style={{width:"18rem"}}>
   
 <button className="btn btn-outline-info center" onClick={()=>{addproject()}}>
 <br/><br/><br/>
@@ -140,10 +129,10 @@ function Compareproject() {
 <div className="col-md-4 my-3">
 {item3!==-1?<div  style={{width: "18rem"}}>
 
-<div className="card" style={{width:"18rem", margin:"1rem"}}>
+<div className="card" style={{width:"18rem"}}>
 <img src={projectdata[item3][2].fields[getKey(projectdata[item3][2].fields)]} className="card-img-top" alt="project"/>
 <div className="card-body">
-<h2 className="card-title">{getKey(projectdata[item3][0].fields)}</h2>
+<h5 className="card-title"><b>{getKey(projectdata[item3][0].fields)}</b></h5>
 <h5 className="card-title">{projectdata[item3][0].fields[getKey(projectdata[item3][0].fields)]}</h5>
 <h6 className="card-title">{projectdata[item3][1].fields[getKey(projectdata[item3][1].fields)]}</h6>
 <p className="card-title">{projectdata[item3][3].fields[getKey(projectdata[item3][3].fields)]}</p>
@@ -153,7 +142,7 @@ function Compareproject() {
 </div>:
 <div  style={{width: "18rem"}}>
 
-<div style={{width:"18rem", margin:"1rem"}}>
+<div style={{width:"18rem"}}>
   
 <button className="btn btn-outline-info center" onClick={()=>{addproject()}}>
 <br/><br/><br/>
@@ -169,31 +158,32 @@ function Compareproject() {
 
 
 </div>
+</center>
 </div>
 <div className= "container">
 <div className="row">
 <div className="line"/>
  {(coldata.length>0&&coldata.length<5)&&coldata[0].map((each,index)=>{
     return <>
-    <div className="container text-center">
+    <div class="container text-center">
    <div className="row"> 
     <div className="col">
-   <h3 className="text4">{getKey(coldata[0][index].fields)!==undefined?coldata[0][index].fields[getKey(coldata[0][index].fields)]:<br></br>}</h3>
+    <h3 class="text4" ><b>{getKey(coldata[0][index].fields)!==undefined?coldata[0][index].fields[getKey(coldata[0][index].fields)]:<br></br>}</b></h3>
    </div>
    </div>
    
    
- {coldata.length>1&&<div className="row"> 
-   {coldata.length>=2&&<div className="col">
-    <p className="text5">{getKey(coldata[1][index].fields)!==undefined?coldata[1][index].fields[getKey(coldata[1][index].fields)]:<br></br>}</p>
+ {coldata.length>1&&<div class="row"> 
+   {coldata.length>=2&&<div class="col">
+    <p class="text5">{getKey(coldata[1][index].fields)!==undefined?coldata[1][index].fields[getKey(coldata[1][index].fields)]:<br></br>}</p>
     </div>}
-    {coldata.length>=3&&<div className="col">
-    <p className="text5">{getKey(coldata[2][index].fields)!==undefined?coldata[2][index].fields[getKey(coldata[2][index].fields)]:<br></br>}</p>
+    {coldata.length>=3&&<div class="col">
+    <p class="text5">{getKey(coldata[2][index].fields)!==undefined?coldata[2][index].fields[getKey(coldata[2][index].fields)]:<br></br>}</p>
     </div>}
-    {coldata.length===4&&<div className="col">
-    <p className="text5">{getKey(coldata[3][index].fields)!==undefined?coldata[3][index].fields[getKey(coldata[3][index].fields)]:<br></br>}</p>
+    {coldata.length===4&&<div class="col">
+    <p class="text5">{getKey(coldata[3][index].fields)!==undefined?coldata[3][index].fields[getKey(coldata[3][index].fields)]:<br></br>}</p>
     </div>}
-  </div>}
+ </div>}
 </div>
 </>
  })}

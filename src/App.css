@@ -102,11 +102,28 @@ body {
   display: block;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.alert-class {
+  margin-top: 50px;
+}
+
+
 
 .search-icon {
   width: 24px;
   height: 24px;
   margin-left: -40px;
+  color: #000000;
+}
+
+.search-icon-1 {
+  width: 24px;
+  height: 24px;
+  margin-left: -57px;
   color: #000000;
 }
 
@@ -185,6 +202,17 @@ body {
   font-size: 150%;
   margin-top: 0.45%;
 }
+
+.text4{
+  font-size: 100%;
+  padding-top: 3rem;
+  padding-right:5rem;
+}
+.text5{
+  padding-right:5rem;
+  
+}
+
 
 .btn1 {
   margin-top: "5rem";

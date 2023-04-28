@@ -31,7 +31,7 @@ const Login = () => {
     //     console.log(l.length)
     //     console.log(l)
     //     const handlechange = () => {
-           
+
     //         if (l.length !== 0) {
     //             for (var i = 0; i < l.length; i++) {
     //                 if (l[i] !== 'Field1' && l[i] !== 'ProjectName') {
@@ -44,7 +44,7 @@ const Login = () => {
     // }
     const navigating = () => {
         if (localStorage.getItem('token')) {
-           // handlechanges();
+            // handlechanges();
             histroy("/display");
         }
     }
@@ -59,12 +59,11 @@ const Login = () => {
                     Product3: "01/01/2020",
                     Product4: "01/01/2020",
                     Product5: "01/01/2020",
-                    Product1freetrail:5,
-                    Product2freetrail:5,
-                    Product3freetrail:5,
-                    Product4freetrail:5,
-                    Product5freetrail:5
-                    
+                    Product1freetrail: 5,
+                    Product2freetrail: 5,
+                    Product3freetrail: 5,
+                    Product4freetrail: 5,
+                    Product5freetrail: 5
 
                 }
             }
@@ -111,13 +110,15 @@ const Login = () => {
                     localStorage.setItem('Verify', 'Paid')
                 }
                 console.log(records[0].fields.Product1freetrail)
-                localStorage.setItem('free',records[0].fields.Product1freetrail)
-               // setfree(records[0].fields.Product1freetrail)
+                localStorage.setItem('phone', phonenumber)
+                localStorage.setItem('free', records[0].fields.Product1freetrail)
+                // setfree(records[0].fields.Product1freetrail)
                 return true
             } else {
                 await handleSubmit(phonenumber)
+                localStorage.setItem('phone', phonenumber)
                 localStorage.setItem('Verify', 'NotPaid')
-                localStorage.setItem('free',5)
+                localStorage.setItem('free', 5)
                 return false
             }
         });
@@ -178,13 +179,13 @@ const Login = () => {
                 console.log(user)
                 if ((serachrecord(res._tokenResponse.phoneNumber)) === false) {
                     handleSubmit(res._tokenResponse.phoneNumber)
-                   // setfree(5)
-                   // localStorage.setItem('Verify', 'Paid')
+                    // setfree(5)
+                    // localStorage.setItem('Verify', 'Paid')
                 }
                 //handleSubmit(res._tokenResponse.phoneNumber)
                 localStorage.setItem('token', res.user.accessToken)
                 console.log(typeof (res.user.accessToken))
-              //  handlechanges();
+                //  handlechanges();
                 setLoading(false);
 
             })
@@ -197,13 +198,13 @@ const Login = () => {
 
     return (
         <>
-            <nav className="navbar navbar-light bg-light justify-content-between">
+            <nav className="navbar sticky navbar-light bg-light justify-content-between">
                 <h1 className="text1 text3"><b>RealtyAi</b></h1>
             </nav>
             <div className="App">
                 <div className="row">
                     <div className="col">
-                        <center><img style={{ minWidth:"20rem", width:"60%", height: 'auto' , marginBottom:"10vw", marginTop:"10vw"}} src={imagebg} alt="signup" /></center>
+                        <center><img style={{ minWidth: "20rem", width: "60%", height: 'auto', marginBottom: "8vw", marginTop: "7vw" }} src={imagebg} alt="signup" /></center>
                     </div>
                     <div className="app1 col flex h-screen">
                         <div style={{ marginTop: "7rem", marginBottom: "5rem", marginRight: "auto", width: "80%", marginLeft: "auto", minWidth: "20rem", opacity: "0.8" }} className="card">
@@ -212,7 +213,7 @@ const Login = () => {
                                 success: { style: { background: 'green', color: 'white' } },
                                 error: { style: { background: '#cc0000', color: 'white' } }
                             }} /> */}
-                            <ToastContainer autoClose={4000} position="top-center" pauseOnHover={false} closeOnClick theme="colored" />
+                            <ToastContainer className="alert-class" autoClose={4000} position="top-center" pauseOnHover={false} closeOnClick theme="colored" />
                             <div id="recaptcha-container"></div>
                             {user ? (
                                 <h2 style={{ marginLeft: "2rem", marginTop: "4rem" }} className="font-medium text-2xl">
@@ -220,23 +221,21 @@ const Login = () => {
                                     <br /><br /><br /><br />
                                 </h2>
                             ) : (
-                                <div className="w-80 flex flex-col gap-4 rounded-lg p-4" style={{ marginLeft: "9%", marginTop: "7%" }}>
-                                    <h2 style={{marginLeft:"7%",color:"black"}}>
+                                <div className="w-80 flex flex-col gap-4 rounded-lg p-4" style={{ marginLeft: "1vw", marginTop: "7%" }}>
+                                    {/* <h2 style={{marginLeft:"7%",color:"black"}}>
                                         <b>SignUp-Login</b>
-                                    </h2>
+                                    </h2> */}
                                     {showOTP ? (
                                         <>
+                                            <h2 style={{ color: "black" }}><b>Enter OTP</b></h2>
                                             <label
                                                 htmlFor="otp"
                                                 className="font-bold text-xl"
-                                                style={{color:"black"}}
+                                                style={{ color: "black", marginTop: "7vw", marginBottom: "1vw" }}
                                             >
-                                                <br /><br />
-                                                <br /><br />
-                                                <br /><br />
-                                                <br /><br />
-                                                Enter your OTP
+                                                OTP has been sent to your mobile.
                                                 <br />
+                                                Please enter below
                                             </label>
                                             <OtpInput
                                                 value={otp}
@@ -245,9 +244,9 @@ const Login = () => {
                                                 otpType="number"
                                                 disabled={false}
                                                 autoFocus
-                                                className="opt-container "
+                                                className="opt-container"
                                             ></OtpInput>
-                                            <br /><br /><br />
+                                            <br /> <br /> <br />
                                             <button
                                                 onClick={onOTPVerify}
                                                 className="btn btn1 btn-outline-secondary center"
@@ -260,20 +259,23 @@ const Login = () => {
                                         </>
                                     ) : (
                                         <>
+                                            <h2 style={{ marginLeft: "7%", color: "black" }}>
+                                                <b>SignUp-Login</b>
+                                            </h2>
                                             <label
                                                 htmlFor=""
                                                 className="font-bold text-xl"
-                                                style={{ paddingBottom: "1rem" , marginLeft:"7%", color:"black"}}
+                                                style={{ paddingBottom: "4vw", marginLeft: "7%", color: "black" , marginTop:"1vw"}}
                                             >
                                                 Please enter your mobile number  <br /> to recieve a One Time Password
                                             </label>
                                             <div className="container">
-                                                <PhoneInput inputStyle={{width:"80%", height:"40px"}} style={{marginLeft:"5%"}} country={"in"} value={ph} onChange={setPh} />
-                                                <br /><br /><br /><br /><br /><br /><br />
+                                                <PhoneInput inputStyle={{ width: "80%", height: "40px" }} style={{ marginLeft: "5%" }} country={"in"} value={ph} onChange={setPh} />
+                                                <br /><br /><br /><br /><br />
                                                 <button
                                                     onClick={onSignup}
                                                     className="btn btn1 btn-outline-secondary center"
-                                                    style={{marginBottom:"4vw"}}
+                                                    style={{ marginBottom: "4vw" }}
                                                 >
                                                     {loading && (
                                                         <CgSpinner size={20} className="mt-1 animate-spin" />

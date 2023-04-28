@@ -79,6 +79,7 @@ function Displaycard() {
       // setarea(0)
       // setlocality(0)
     }
+    return true;
   }
   const citingtext = (item1) => {
     console.log("city")
@@ -94,7 +95,9 @@ function Displaycard() {
       setlocality(1)
       //  setarea(0)
       //  setcity(0)
+     
     }
+    return true;
   }
   const localingtext = (item1) => {
     setlocaltext(item1)
@@ -123,6 +126,7 @@ function Displaycard() {
       //   setlocality(0)
       //   setcity(0)
     }
+    return true;
   }
 
 
@@ -172,7 +176,7 @@ function Displaycard() {
 
                 <center><div className="dropdown" style={{ width: "100%" }}>
                   <input style={{ width: "90%" , height:"3rem", margin:"5px", borderRadius:"10px", color:"black", fontSize:"1.5rem", paddingLeft:"1%" }} className="me-2 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" type="search" placeholder="Search"  aria-label="Search" id="myText" onChange={handleSearchQueryChange} />
-                  <GoSearch className="search-icon" />
+                  <GoSearch className="search-icon-1" />
                   <ul style={{ width: "100%" }} className="dropdown-menu dropdown-content">
                     <ul>
                       {projectdata.filter(
