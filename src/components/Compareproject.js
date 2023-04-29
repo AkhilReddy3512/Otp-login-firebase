@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import MyContext from './context/Createcontext'
 import { useContext } from 'react';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { ToastContainer, toast } from 'react-toastify';
@@ -58,22 +59,34 @@ function Compareproject() {
     console.log(demo)
 
   }
+  const handleLogout = () => {
+    localStorage.setItem('token', 'null');
+    window.location.reload(true);
+  }
+
 
   return (
     <>
       <ToastContainer autoClose={4000} position="top-center" pauseOnHover={false} closeOnClick theme="colored" />
       <nav className="navbar sticky navbar-light bg-light justify-content-between">
-        <href className="text1 text3"><b>RealtyAi</b></href>
-        <div className="dropdown" >
-          <button className="btn text2 dropdown" style={{marginRight:"30px"}} type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <CgProfile />
-          </button>
-          <ul className="dropdown-menu">
-            <li><CgProfile style={{margin:"2%"}} /> {localStorage.getItem('phone')}</li>
-            <hr />
-            <li><button className='btn btn-outline-info mx-3' style={{width:"80%"}} onClick={localStorage.setItem('token','null')}>Log Out</button></li>
-          </ul>
-        </div>
+        <h1 className="text1 text3"><b>RealtyAi</b></h1>
+        {localStorage.getItem('token') === 'null' ? (
+          <Link className="btn btn-outline-info mx-3" to="https://otp-login-b8ec1.firebaseapp.com/" role="button">Sign In</Link>
+        ) : (
+          <>
+            <div className="dropdown" >
+              <button className="btn text2 dropdown" style={{ marginRight: "30px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <CgProfile />
+              </button>
+              <ul className="dropdown-menu">
+                <li><CgProfile style={{ margin: "2%" }} /> {localStorage.getItem('phone')}</li>
+                <hr />
+                <li><button className='btn btn-outline-info mx-3' style={{ width: "80%" }} onClick={handleLogout}>Log Out</button></li>
+              </ul>
+            </div>
+          </>
+        )}
+
       </nav>
       <center>
         <div className='container'>
