@@ -19,6 +19,12 @@ body {
   width: 100%;
 }
 
+.disp-img{
+  background-image: url('098765img.jpg');
+  margin-top: 3rem;
+  height: 100%;
+  width: 100%;
+}
 .btn1:hover {
   border-color: rgb(53, 193, 248);
   background-color: rgb(53, 193, 248);

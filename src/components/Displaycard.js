@@ -161,7 +161,7 @@ function Displaycard() {
           <>
             <div className="d-flex align-items-center">
               {localStorage.getItem('Verify') === 'NotPaid' && (
-                <Link className="btn btn-dark me-4" to="https://reality-ai-payment-page.web.app/" role="button">SUBSCRIBE NOW!!</Link>
+                <Link className="btn btn-dark me-2" to="https://reality-ai-payment-page.web.app/" role="button">SUBSCRIBE NOW!!</Link>
               )}
               <div className="dropdown" >
                 <button className="btn text2 dropdown" style={{ marginRight: "30px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -177,7 +177,7 @@ function Displaycard() {
           </>
         )}
       </nav>
-      <div className="App">
+      <div className="disp-img">
         <p className="text">Don't Buy Your Dream Home Without Expert Guidance</p>
         {/* <button onClick={()=>{ handlechanges()}}></button> */}
       </div>
@@ -206,7 +206,7 @@ function Displaycard() {
                     <ul>
                       {projectdata.filter(
                         (item1) =>
-                          (getKey(item1[0].fields).toLowerCase()).includes(searchQuery.toLowerCase()) || ((item1[0].fields[getKey(item1[0].fields)].toLowerCase()).includes(searchQuery.toLowerCase()) && citing()) || ((item1[1].fields[getKey(item1[1].fields)].toLowerCase()).includes(searchQuery) && localitying()) || ((item1[2].fields[getKey(item1[2].fields)].toLowerCase()).includes(searchQuery) && areaing())
+                          (getKey(item1[0].fields).toLowerCase()).includes(searchQuery.toLowerCase()) || ((item1[0].fields[getKey(item1[0].fields)].toLowerCase()).includes(searchQuery.toLowerCase()) && citing()) || ((item1[1].fields[getKey(item1[1].fields)].toLowerCase()).includes(searchQuery) && localitying()) || ((item1[3].fields[getKey(item1[3].fields)].toLowerCase()).includes(searchQuery) && areaing())
                       ).map((item1, index) => (
                         <div style={{ width: "100%" }}>
                           <li className="hover" key={index} style={{ marginLeft: "4vw", marginRight: "4vw" }} onClick={() => { handle(item1) }} >
