@@ -1,6 +1,6 @@
 import { CgSpinner } from "react-icons/cg";
 import OtpInput from "otp-input-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { auth } from "./firebase";
@@ -21,7 +21,24 @@ const Login = () => {
     const [user, setUser] = useState();
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'pathtvro7iNxp5yYN.69817a21c94ed77c049dca2361983216550ee535881f255333ebde130d41f299' }).base('appmLtIK7oUkAerdO');
-
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const checkIsMobile = () => {
+          const screenWidth = window.innerWidth;
+          setIsMobile(screenWidth <= 600);
+        };
+        checkIsMobile();
+      
+        window.addEventListener('resize', checkIsMobile);
+        return () => {
+          window.removeEventListener('resize', checkIsMobile);
+        };
+      }, []);
+      
+      // Set the image based on isMobile value
+      useEffect(() => {
+        setImagebg(isMobile ? "cuatemobile.png" : "cuate.png");
+      }, [isMobile]);
 
     //const {setfree} = mycontext
     const histroy = useNavigate();
@@ -42,6 +59,8 @@ const Login = () => {
     //     }
     //     handlechange()
     // }
+    
+
     const navigating = () => {
         if (localStorage.getItem('token')) {
             // handlechanges();
@@ -154,7 +173,11 @@ const Login = () => {
             .then((confirmationResult) => {
                 window.confirmationResult = confirmationResult;
                 setLoading(false);
-                setImagebg("cuate1.png");
+                if (isMobile) {
+                    setImagebg("cuatemobilever.png"); 
+                  } else {
+                    setImagebg("cuatever.png"); 
+                  }
                 setShowOTP(true);
                 toast.success("OTP sent successfully!");
             })
@@ -204,10 +227,10 @@ const Login = () => {
             <div className="App">
                 <div className="row">
                     <div className="col">
-                        <center><img style={{ minWidth: "20rem", width: "60%", height: 'auto', marginBottom: "8vw", marginTop: "7vw" }} src={imagebg} alt="signup" /></center>
+                        <center><img className="login-img" src={imagebg} alt="signup" /></center>
                     </div>
                     <div className="app1 col flex h-screen">
-                        <div style={{ marginTop: "7rem", marginBottom: "5rem", marginRight: "auto", width: "80%", marginLeft: "auto", minWidth: "20rem", opacity: "0.8" }} className="card">
+                        <div className="card mobile-card">
                             {/* <Toaster toastOptions={{
                                 duration: 4000,
                                 success: { style: { background: 'green', color: 'white' } },
@@ -227,7 +250,7 @@ const Login = () => {
                                     </h2> */}
                                     {showOTP ? (
                                         <>
-                                            <h2 style={{ color: "black" }}><b>Enter OTP</b></h2>
+                                            <h2 className="otp-heading"><b>Enter OTP</b></h2>
                                             <label
                                                 htmlFor="otp"
                                                 className="font-bold text-xl"
@@ -259,7 +282,7 @@ const Login = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <h2 style={{ marginLeft: "7%", color: "black" }}>
+                                            <h2 className="signup-login-heading" >
                                                 <b>SignUp-Login</b>
                                             </h2>
                                             <label
