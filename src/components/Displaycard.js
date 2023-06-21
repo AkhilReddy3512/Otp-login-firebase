@@ -160,16 +160,17 @@ function Displaycard() {
         ) : (
           <>
             <div className="d-flex align-items-center">
-              {localStorage.getItem('Verify') === 'NotPaid' && (
-                <Link className="btn btn-dark me-2" to="https://reality-ai-payment-page.web.app/" role="button">SUBSCRIBE NOW!!</Link>
-              )}
               <div className="dropdown" >
-                <button className="btn text2 dropdown" style={{ marginRight: "30px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button className="btn text2 dropdown" style={{ marginRight: "30px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={localStorage.getItem('Verify') === 'NotPaid'}>
                   <CgProfile />
                 </button>
                 <ul className="dropdown-menu">
                   <li><CgProfile style={{ margin: "2%" }} /> {localStorage.getItem('phone')}</li>
                   <hr />
+                  <li>{localStorage.getItem('Verify') === 'NotPaid' && (
+                    <Link className="btn btn-dark me-2" style={{ marginBottom : "15px" , marginLeft:"7px" }} to="https://reality-ai-payment-page.web.app/" role="button">SUBSCRIBE NOW!!</Link>
+                  )}
+                  </li>
                   <li><button className='btn btn-outline-info mx-3' style={{ width: "80%" }} onClick={handleLogout}>Log Out</button></li>
                 </ul>
               </div>
@@ -233,22 +234,14 @@ function Displaycard() {
                       {area === 1 && projectdata.map((item2) => {
                         return <li className="hover" style={{ marginLeft: "4vw", marginRight: "4vw" }} onClick={() => { areaingtext(item2[3].fields[getKey(item2[3].fields)]) }}><p>{item2[3].fields[getKey(item2[3].fields)]}</p><hr /></li>
                       })}
-
                     </div>
                   </ul>
                 </div>
                 </center>
-
-
               </Box>
             </Modal>
           </div>
-
-
-
-
         </div>
-
       </div>
       <div>
         <div className='container'>
@@ -265,7 +258,19 @@ function Displaycard() {
           </div>
         </div>
       </div>
-
+      {localStorage.getItem('Verify') === 'NotPaid' && localStorage.getItem('Free') <= 0 ? (
+        <div className="blur-container">
+          <div className="blur-content">
+            <h3>You have exhausted your 5 Free Comparisions.
+              <br />Pay Subscription to unlock
+            </h3>
+            <Link className="btn btn-info subscribe-button" style={{ color:"white"}} to="https://reality-ai-payment-page.web.app/" role="button">SUBSCRIBE </Link>
+          </div>
+        </div>
+      ) : (
+        <div>
+        </div>
+      )}
     </>
   )
 }
