@@ -24,21 +24,21 @@ const Login = () => {
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
         const checkIsMobile = () => {
-          const screenWidth = window.innerWidth;
-          setIsMobile(screenWidth <= 600);
+            const screenWidth = window.innerWidth;
+            setIsMobile(screenWidth <= 600);
         };
         checkIsMobile();
-      
+
         window.addEventListener('resize', checkIsMobile);
         return () => {
-          window.removeEventListener('resize', checkIsMobile);
+            window.removeEventListener('resize', checkIsMobile);
         };
-      }, []);
-      
-      // Set the image based on isMobile value
-      useEffect(() => {
-        setImagebg(isMobile ? "cuatemobile.png" : "cuate.png");
-      }, [isMobile]);
+    }, []);
+
+    // Set the image based on isMobile value
+    useEffect(() => {
+        setImagebg(isMobile ? "Ss179.png" : "cuate.png");
+    }, [isMobile]);
 
     //const {setfree} = mycontext
     const histroy = useNavigate();
@@ -59,7 +59,7 @@ const Login = () => {
     //     }
     //     handlechange()
     // }
-    
+
 
     const navigating = () => {
         if (localStorage.getItem('token')) {
@@ -174,10 +174,10 @@ const Login = () => {
                 window.confirmationResult = confirmationResult;
                 setLoading(false);
                 if (isMobile) {
-                    setImagebg("cuatemobilever.png"); 
-                  } else {
-                    setImagebg("cuatever.png"); 
-                  }
+                    setImagebg("Ss180.png");
+                } else {
+                    setImagebg("cuatever.png");
+                }
                 setShowOTP(true);
                 toast.success("OTP sent successfully!");
             })
@@ -288,7 +288,7 @@ const Login = () => {
                                             <label
                                                 htmlFor=""
                                                 className="font-bold text-xl"
-                                                style={{ paddingBottom: "4vw", marginLeft: "7%", color: "black" , marginTop:"1vw"}}
+                                                style={{ paddingBottom: "4vw", marginLeft: "7%", color: "black", marginTop: "1vw" }}
                                             >
                                                 Please enter your mobile number  <br /> to recieve a One Time Password
                                             </label>
@@ -319,9 +319,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-
-
-

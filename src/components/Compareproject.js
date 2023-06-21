@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
+import { FaTimesCircle } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MdDoubleArrow } from "react-icons/md"
@@ -90,23 +91,23 @@ function Compareproject() {
       </nav>
       <center>
         <div className='container'>
-          <div className='row' style={{ marginTop: "6rem" }}>
+          <div className='row row-mbl' style={{ marginTop: "6rem" }}>
             <div className="col-md-4 my-3">
-              {item1 !== -1 ? <div style={{ width: "18rem" }}>
-                <div className="card" style={{ width: "18rem" }}>
+              {item1 !== -1 ? <div className="card-up">
+                <div className="card card-cmp">
                   <img src={projectdata[item1][2].fields[getKey(projectdata[item1][2].fields)]} className="card-img-top" alt="project" />
                   <div className="card-body" style={{ textAlign: "left" }}>
+                    <span className="remove-icon" onClick={() => removeitem(1, setitem1)}><FaTimesCircle /></span>
                     <h5 className="card-title"><b>{getKey(projectdata[item1][0].fields)}</b></h5>
                     <h5 className="card-title">{projectdata[item1][0].fields[getKey(projectdata[item1][0].fields)]}</h5>
                     <h6 className="card-title">{projectdata[item1][1].fields[getKey(projectdata[item1][1].fields)]}</h6>
                     <p className="card-title">{projectdata[item1][3].fields[getKey(projectdata[item1][3].fields)]}</p>
-                    <button className="btn btn-outline-info center" onClick={() => { removeitem(1, setitem1) }}>Remove</button>
                   </div>
                 </div>
               </div> :
-                <div style={{ width: "18rem" }}>
+                <div className='add-to-c-up'>
 
-                  <div style={{ width: "18rem" }}>
+                  <div className="add-to-c" >
 
                     <button className="btn btn-outline-info center" onClick={() => { addproject() }}>
                       <br /><br /><br />
@@ -120,22 +121,22 @@ function Compareproject() {
                 </div>}
             </div>
             <div className="col-md-4 my-3">
-              {item2 !== -1 ? <div style={{ width: "18rem" }}>
+              {item2 !== -1 ? <div className="card-up">
 
-                <div className="card" style={{ width: "18rem" }}>
+                <div className="card card-cmp">
                   <img src={projectdata[item2][2].fields[getKey(projectdata[item2][2].fields)]} className="card-img-top" alt="project" />
                   <div className="card-body" style={{ textAlign: "left" }}>
+                    <span className="remove-icon" onClick={() => { removeitem(2, setitem2) }}><FaTimesCircle /></span>
                     <h5 className="card-title"><b>{getKey(projectdata[item2][0].fields)}</b></h5>
                     <h5 className="card-title">{projectdata[item2][0].fields[getKey(projectdata[item2][0].fields)]}</h5>
                     <h6 className="card-title">{projectdata[item2][1].fields[getKey(projectdata[item2][1].fields)]}</h6>
                     <p className="card-title">{projectdata[item2][3].fields[getKey(projectdata[item2][3].fields)]}</p>
-                    <button className="btn btn-outline-info center" onClick={() => { removeitem(2, setitem2) }}>Remove</button>
                   </div>
                 </div>
               </div> :
-                <div style={{ width: "18rem" }}>
+                <div className='add-to-c-up'>
 
-                  <div style={{ width: "18rem" }}>
+                  <div className="add-to-c">
 
                     <button className="btn btn-outline-info center" onClick={() => { addproject() }}>
                       <br /><br /><br />
@@ -149,21 +150,21 @@ function Compareproject() {
                 </div>}
             </div>
             <div className="col-md-4 my-3">
-              {item3 !== -1 ? <div style={{ width: "18rem" }}>
+              {item3 !== -1 ? <div className="card-up">
 
-                <div className="card" style={{ width: "18rem" }}>
+                <div className="card card-cmp" >
                   <img src={projectdata[item3][2].fields[getKey(projectdata[item3][2].fields)]} className="card-img-top" alt="project" />
                   <div className="card-body" style={{ textAlign: "left" }}>
+                    <span className="remove-icon" onClick={() => removeitem(3, setitem3)}><FaTimesCircle /></span>
                     <h5 className="card-title"><b>{getKey(projectdata[item3][0].fields)}</b></h5>
                     <h5 className="card-title">{projectdata[item3][0].fields[getKey(projectdata[item3][0].fields)]}</h5>
                     <h6 className="card-title">{projectdata[item3][1].fields[getKey(projectdata[item3][1].fields)]}</h6>
                     <p className="card-title">{projectdata[item3][3].fields[getKey(projectdata[item3][3].fields)]}</p>
-                    <button className="btn btn-outline-info center" onClick={() => { removeitem(3, setitem3) }}>Remove</button>
                   </div>
                 </div>
               </div> :
-                <div style={{ width: "18rem" }}>
-                  <div style={{ width: "18rem" }}>
+                <div className='add-to-c-up'>
+                  <div className="add-to-c">
                     <button className="btn btn-outline-info center" onClick={() => { addproject() }}>
                       <br /><br /><br />
                       <img src="https://cdn.pixabay.com/photo/2017/03/19/03/51/material-icon-2155448_960_720.png" className="card-img-top" alt="project" />
@@ -195,13 +196,13 @@ function Compareproject() {
                     <tr>
                       {coldata.length > 1 && <div className="row">
                         {coldata.length >= 2 && <div className="col">
-                          <td><p className="text5" style={{ width: "25vw", textAlign: "center", marginLeft: "2%" }}>{getKey(coldata[1][index].fields) !== undefined ? coldata[1][index].fields[getKey(coldata[1][index].fields)] : <p>-</p>}</p></td>
+                          <td><p className="text-cmp" >{getKey(coldata[1][index].fields) !== undefined ? coldata[1][index].fields[getKey(coldata[1][index].fields)] : <p>-</p>}</p></td>
                         </div>}
                         {coldata.length >= 3 && <div className="col">
-                          <td><p className="text5" style={{ width: "25vw", textAlign: "center", marginLeft: "5%", borderLeft: "1px solid black" }}>{getKey(coldata[2][index].fields) !== undefined ? coldata[2][index].fields[getKey(coldata[2][index].fields)] : <p>-</p>}</p></td>
+                          <td><p className="text-cmp-next" >{getKey(coldata[2][index].fields) !== undefined ? coldata[2][index].fields[getKey(coldata[2][index].fields)] : <p>-</p>}</p></td>
                         </div>}
                         {coldata.length === 4 && <div className="col">
-                          <td><p className="text5" style={{ width: "25vw", textAlign: "center", marginLeft: "2%", borderLeft: "1px solid black" }} >{getKey(coldata[3][index].fields) !== undefined ? coldata[3][index].fields[getKey(coldata[3][index].fields)] : <p>-</p>}</p></td>
+                          <td><p className="text-cmp-next" >{getKey(coldata[3][index].fields) !== undefined ? coldata[3][index].fields[getKey(coldata[3][index].fields)] : <p>-</p>}</p></td>
                         </div>}
                       </div>}
                     </tr>

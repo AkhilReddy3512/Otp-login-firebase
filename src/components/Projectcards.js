@@ -88,7 +88,7 @@ function Projectcard(props) {
   return (
     <>
     <ToastContainer autoClose={4000} position="top-center" pauseOnHover={false} closeOnClick theme="colored" />
-      <div className="card" style={{ width: "18rem", marginLeft: "10%" }}>
+      <div className="card card-disp">
         <img src={props.data[2].fields[getKey(props.data[2].fields)]} className="card-img-top" alt="project" />
         <div className="card-body" >
           <h4 ><b>{getKey(props.data[0].fields)}</b></h4>
