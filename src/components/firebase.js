@@ -29,7 +29,7 @@ import { getAuth } from "firebase/auth";
 //   measurementId: "G-09VJERCMY0"
 // };
 
-//AKhik2
+//AKhil2
 const firebaseConfig = {
   apiKey: "AIzaSyDf2IsdFDD3QPJ7msPHJZZLT9tswvrlMas",
   authDomain: "testin-c8189.firebaseapp.com",
