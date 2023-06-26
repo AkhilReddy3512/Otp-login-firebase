@@ -9,25 +9,25 @@ import { getAuth } from "firebase/auth";
 
 
 //Akhil firebase
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAQ_0hc0yUVszfed_tp0lXN-tPj_Cdc0SE",
-//     authDomain: "otp-login-b8ec1.firebaseapp.com",
-//     projectId: "otp-login-b8ec1",
-//     storageBucket: "otp-login-b8ec1.appspot.com",
-//     messagingSenderId: "538380042630",
-//     appId: "1:538380042630:web:946b4e8668a232ec786c07"
-//   };
+const firebaseConfig = {
+    apiKey: "AIzaSyAQ_0hc0yUVszfed_tp0lXN-tPj_Cdc0SE",
+    authDomain: "otp-login-b8ec1.firebaseapp.com",
+    projectId: "otp-login-b8ec1",
+    storageBucket: "otp-login-b8ec1.appspot.com",
+    messagingSenderId: "538380042630",
+    appId: "1:538380042630:web:946b4e8668a232ec786c07"
+  };
 
 //Ruthik Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyCY64miMLJIwfBUa1EMLwocffdCSG_yVlc",
-  authDomain: "realityai.firebaseapp.com",
-  projectId: "realityai",
-  storageBucket: "realityai.appspot.com",
-  messagingSenderId: "718981539558",
-  appId: "1:718981539558:web:85f6c63455c732b1edfd27",
-  measurementId: "G-09VJERCMY0"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCY64miMLJIwfBUa1EMLwocffdCSG_yVlc",
+//   authDomain: "realityai.firebaseapp.com",
+//   projectId: "realityai",
+//   storageBucket: "realityai.appspot.com",
+//   messagingSenderId: "718981539558",
+//   appId: "1:718981539558:web:85f6c63455c732b1edfd27",
+//   measurementId: "G-09VJERCMY0"
+// };
 
 //AKhik2
 // const firebaseConfig = {
