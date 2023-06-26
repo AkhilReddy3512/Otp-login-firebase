@@ -138,11 +138,9 @@ function Displaycard() {
     setareatext("")
     setcitytext("")
     handleClose()
-  }
+  } 
 
-
-
-  const handleSearchQueryChange = (event) => {
+  const handleSearchQueryChange = (event) => {  
     setSearchQuery(event.target.value);
   };
 
@@ -258,7 +256,7 @@ function Displaycard() {
           </div>
         </div>
       </div>
-      {localStorage.getItem('Verify') === 'NotPaid' && localStorage.getItem('Free') <= 0 ? (
+      {((String(localStorage.getItem('Verify')) === 'NotPaid') && (parseInt(localStorage.getItem('free')) <= 0)) ? (
         <div className="blur-container">
           <div className="blur-content">
             <h3>You have exhausted your 5 Free Comparisions.
