@@ -98,9 +98,9 @@ function Compareproject() {
                   <img src={projectdata[item1][2].fields[getKey(projectdata[item1][2].fields)]} className="card-img-top" alt="project" />
                   <div className="card-body" style={{ textAlign: "left" }}>
                     <span className="remove-icon" onClick={() => removeitem(1, setitem1)}><FaTimesCircle /></span>
-                    <h5 className="card-title"><b>{getKey(projectdata[item1][0].fields)}</b></h5>
-                    <h5 className="card-title">{projectdata[item1][0].fields[getKey(projectdata[item1][0].fields)]}</h5>
-                    <h6 className="card-title">{projectdata[item1][1].fields[getKey(projectdata[item1][1].fields)]}</h6>
+                    <h6 className="card-title"><b>{getKey(projectdata[item1][0].fields)}</b></h6>
+                    <h6 className="card-title">{projectdata[item1][0].fields[getKey(projectdata[item1][0].fields)]}</h6>
+                    <p className="card-title">{projectdata[item1][1].fields[getKey(projectdata[item1][1].fields)]}</p>
                     <p className="card-title">{projectdata[item1][3].fields[getKey(projectdata[item1][3].fields)]}</p>
                   </div>
                 </div>
@@ -127,9 +127,9 @@ function Compareproject() {
                   <img src={projectdata[item2][2].fields[getKey(projectdata[item2][2].fields)]} className="card-img-top" alt="project" />
                   <div className="card-body" style={{ textAlign: "left" }}>
                     <span className="remove-icon" onClick={() => { removeitem(2, setitem2) }}><FaTimesCircle /></span>
-                    <h5 className="card-title"><b>{getKey(projectdata[item2][0].fields)}</b></h5>
-                    <h5 className="card-title">{projectdata[item2][0].fields[getKey(projectdata[item2][0].fields)]}</h5>
-                    <h6 className="card-title">{projectdata[item2][1].fields[getKey(projectdata[item2][1].fields)]}</h6>
+                    <h6 className="card-title"><b>{getKey(projectdata[item2][0].fields)}</b></h6>
+                    <h6 className="card-title">{projectdata[item2][0].fields[getKey(projectdata[item2][0].fields)]}</h6>
+                    <p className="card-title">{projectdata[item2][1].fields[getKey(projectdata[item2][1].fields)]}</p>
                     <p className="card-title">{projectdata[item2][3].fields[getKey(projectdata[item2][3].fields)]}</p>
                   </div>
                 </div>
@@ -156,9 +156,9 @@ function Compareproject() {
                   <img src={projectdata[item3][2].fields[getKey(projectdata[item3][2].fields)]} className="card-img-top" alt="project" />
                   <div className="card-body" style={{ textAlign: "left" }}>
                     <span className="remove-icon" onClick={() => removeitem(3, setitem3)}><FaTimesCircle /></span>
-                    <h5 className="card-title"><b>{getKey(projectdata[item3][0].fields)}</b></h5>
-                    <h5 className="card-title">{projectdata[item3][0].fields[getKey(projectdata[item3][0].fields)]}</h5>
-                    <h6 className="card-title">{projectdata[item3][1].fields[getKey(projectdata[item3][1].fields)]}</h6>
+                    <h6 className="card-title"><b>{getKey(projectdata[item3][0].fields)}</b></h6>
+                    <h6 className="card-title">{projectdata[item3][0].fields[getKey(projectdata[item3][0].fields)]}</h6>
+                    <p className="card-title">{projectdata[item3][1].fields[getKey(projectdata[item3][1].fields)]}</p>
                     <p className="card-title">{projectdata[item3][3].fields[getKey(projectdata[item3][3].fields)]}</p>
                   </div>
                 </div>

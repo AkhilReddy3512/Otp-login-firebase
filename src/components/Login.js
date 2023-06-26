@@ -236,7 +236,7 @@ const Login = () => {
                                 success: { style: { background: 'green', color: 'white' } },
                                 error: { style: { background: '#cc0000', color: 'white' } }
                             }} /> */}
-                            <ToastContainer className="alert-class" autoClose={4000} position="top-center" pauseOnHover={false} closeOnClick theme="colored" />
+                            <ToastContainer className="alert-class" autoClose={4000} position="top-center" pauseOnHover={false} closeOnClick theme="colored" style={{ position: "fixed", top: "0", right: "0" }} />
                             <div id="recaptcha-container"></div>
                             {user ? (
                                 <h2 style={{ marginLeft: "2rem", marginTop: "4rem" }} className="font-medium text-2xl">
@@ -272,7 +272,7 @@ const Login = () => {
                                             <br /> <br /> <br />
                                             <button
                                                 onClick={onOTPVerify}
-                                                className="btn btn1 btn-outline-secondary center"
+                                                className="btn btn1 btn-outline-secondary center otp-button"
                                             >
                                                 {loading && (
                                                     <CgSpinner size={20} className="mt-1 animate-spin" />
